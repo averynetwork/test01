@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_subtitle">Arquivador Bedrock</string>
+    <string name="operation">Operação</string>
+    <string name="unpack">Extrair</string>
+    <string name="create_brarchive">Criar .brarchive</string>
+    <string name="archive_root">Pasta raiz do arquivo</string>
+    <string name="source_archive">Arquivo de origem</string>
+    <string name="folder_selected">Pasta selecionada</string>
+    <string name="choose_folder_or_file">Escolha uma pasta ou arquivo</string>
+    <string name="file_not_selected">Nenhum arquivo selecionado</string>
+    <string name="choose_folder_root">Escolher pasta como raiz</string>
+    <string name="choose_single_file">Ou escolher um único arquivo</string>
+    <string name="choose_file">Escolher arquivo</string>
+    <string name="destination_folder">Pasta de destino</string>
+    <string name="not_selected">Não selecionada</string>
+    <string name="choose_folder">Escolher pasta</string>
+    <string name="running">Processando…</string>
+    <string name="working">Em andamento…</string>
+    <string name="unpack_button">Extrair</string>
+    <string name="create_archive">Criar arquivo</string>
+    <string name="local_processing">O processamento acontece localmente no dispositivo.</string>
+    <string name="choose_input">Escolha um arquivo de entrada</string>
+    <string name="cannot_open_folder">Não foi possível abrir a pasta selecionada</string>
+    <string name="cannot_open_input">Não foi possível abrir o arquivo de entrada</string>
+    <string name="engine_missing">O mecanismo de arquivamento não está instalado ou não pode ser executado</string>
+    <string name="cannot_open_destination">Não foi possível abrir a pasta de destino</string>
+    <string name="cannot_create_output">Não foi possível criar o arquivo de saída</string>
+    <string name="cannot_write_output">Não foi possível gravar o resultado</string>
+    <string name="cannot_read_file">Não foi possível ler o arquivo: %1$s</string>
+    <string name="done">Concluído. O resultado foi salvo na pasta selecionada.</string>
+    <string name="cannot_read_directory">Não foi possível ler a pasta: %1$s</string>
+    <string name="cannot_create_folder">Não foi possível criar a pasta</string>
+</resources>

@@ -240,24 +240,17 @@ func encodeAction(c *cli.Context) error {
     }
     
     if fileInfo.IsDir() {
-        files, err := os.ReadDir(inputPath)
-        if err != nil {
-            return fmt.Errorf("failed to read directory: %v", err)
-        }
-        
-        for _, file := range files {
-            if file.IsDir() {
-                continue
-            }
-            
-            filePath := filepath.Join(inputPath, file.Name())
+        err := filepath.WalkDir(inputPath, func(filePath string, entry os.DirEntry, walkErr error) error {
+            if walkErr != nil { return walkErr }
+            if entry.IsDir() { return nil }
+            relPath, err := filepath.Rel(inputPath, filePath)
+            if err != nil { return err }
             content, err := os.ReadFile(filePath)
-            if err != nil {
-                return fmt.Errorf("failed to read file %s: %v", filePath, err)
-            }
-            
-            entriesMap[file.Name()] = string(content)
-        }
+            if err != nil { return fmt.Errorf("failed to read file %s: %v", filePath, err) }
+            entriesMap[filepath.ToSlash(relPath)] = string(content)
+            return nil
+        })
+        if err != nil { return fmt.Errorf("failed to read directory recursively: %v", err) }
     } else {
         content, err := os.ReadFile(inputPath)
         if err != nil {

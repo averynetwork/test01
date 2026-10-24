@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_subtitle">Архіватар Bedrock</string>
+    <string name="operation">Аперацыя</string>
+    <string name="unpack">Распакаваць</string>
+    <string name="create_brarchive">Стварыць .brarchive</string>
+    <string name="archive_root">Корань архіва</string>
+    <string name="source_archive">Зыходны архіў</string>
+    <string name="folder_selected">Папка выбрана</string>
+    <string name="choose_folder_or_file">Выберыце папку або файл</string>
+    <string name="file_not_selected">Файл не выбраны</string>
+    <string name="choose_folder_root">Выбраць папку як корань</string>
+    <string name="choose_single_file">Або выбраць адзін файл</string>
+    <string name="choose_file">Выбраць файл</string>
+    <string name="destination_folder">Папка прызначэння</string>
+    <string name="not_selected">Не выбрана</string>
+    <string name="choose_folder">Выбраць папку</string>
+    <string name="running">Аперацыя выконваецца…</string>
+    <string name="working">Выконваецца…</string>
+    <string name="unpack_button">Распакоўваць</string>
+    <string name="create_archive">Стварыць архіў</string>
+    <string name="local_processing">Апрацоўка выконваецца лакальна на прыладзе.</string>
+    <string name="choose_input">Выберыце зыходны файл</string>
+    <string name="cannot_open_folder">Не ўдалося адкрыць выбраную папку</string>
+    <string name="cannot_open_input">Не ўдалося адкрыць зыходны файл</string>
+    <string name="engine_missing">Архіватар не ўсталяваны або не мае дазволу на запуск</string>
+    <string name="cannot_open_destination">Не ўдалося адкрыць папку прызначэння</string>
+    <string name="cannot_create_output">Не ўдалося стварыць файл выніку</string>
+    <string name="cannot_write_output">Не ўдалося запісаць вынік</string>
+    <string name="cannot_read_file">Не ўдалося прачытаць файл: %1$s</string>
+    <string name="done">Гатова. Вынік захаваны ў выбраную папку.</string>
+    <string name="cannot_read_directory">Не ўдалося прачытаць папку: %1$s</string>
+    <string name="cannot_create_folder">Не ўдалося стварыць папку</string>
+</resources>

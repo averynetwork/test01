@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_subtitle">Архиватор Bedrock</string>
+    <string name="operation">Операция</string>
+    <string name="unpack">Распаковать</string>
+    <string name="create_brarchive">Создать .brarchive</string>
+    <string name="archive_root">Корень архива</string>
+    <string name="source_archive">Исходный архив</string>
+    <string name="folder_selected">Папка выбрана</string>
+    <string name="choose_folder_or_file">Выберите папку или файл</string>
+    <string name="file_not_selected">Файл не выбран</string>
+    <string name="choose_folder_root">Выбрать папку как корень</string>
+    <string name="choose_single_file">Или выбрать один файл</string>
+    <string name="choose_file">Выбрать файл</string>
+    <string name="destination_folder">Папка назначения</string>
+    <string name="not_selected">Не выбрана</string>
+    <string name="choose_folder">Выбрать папку</string>
+    <string name="running">Выполняется операция…</string>
+    <string name="working">Выполняется…</string>
+    <string name="unpack_button">Распаковать</string>
+    <string name="create_archive">Создать архив</string>
+    <string name="local_processing">Обработка выполняется локально на устройстве.</string>
+    <string name="choose_input">Выберите исходный файл</string>
+    <string name="cannot_open_folder">Не удалось открыть выбранную папку</string>
+    <string name="cannot_open_input">Не удалось открыть исходный файл</string>
+    <string name="engine_missing">Движок архиватора не установлен или не имеет права на запуск</string>
+    <string name="cannot_open_destination">Не удалось открыть папку назначения</string>
+    <string name="cannot_create_output">Не удалось создать файл результата</string>
+    <string name="cannot_write_output">Не удалось записать результат</string>
+    <string name="cannot_read_file">Не удалось прочитать файл: %1$s</string>
+    <string name="done">Готово. Результат сохранён в выбранную папку.</string>
+    <string name="cannot_read_directory">Не удалось прочитать папку: %1$s</string>
+    <string name="cannot_create_folder">Не удалось создать папку</string>
+</resources>

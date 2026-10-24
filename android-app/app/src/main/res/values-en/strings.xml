@@ -31,4 +31,7 @@
     <string name="done">Done. The result was saved to the selected folder.</string>
     <string name="cannot_read_directory">Could not read folder: %1$s</string>
     <string name="cannot_create_folder">Could not create folder</string>
+    <string name="operation_failed">The operation failed</string>
+    <string name="engine_no_output">The engine did not create an output.</string>
+    <string name="engine_exit_code">The archiver exited with code %1$d</string>
 </resources>

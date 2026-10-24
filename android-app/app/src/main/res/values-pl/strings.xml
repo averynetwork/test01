@@ -31,4 +31,7 @@
     <string name="done">Gotowe. Wynik zapisano w wybranym folderze.</string>
     <string name="cannot_read_directory">Nie można odczytać folderu: %1$s</string>
     <string name="cannot_create_folder">Nie można utworzyć folderu</string>
+    <string name="operation_failed">Nie udało się wykonać operacji</string>
+    <string name="engine_no_output">Silnik nie utworzył wyniku.</string>
+    <string name="engine_exit_code">Archiwizator zakończył działanie z kodem %1$d</string>
 </resources>

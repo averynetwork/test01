@@ -39,8 +39,8 @@ jobs:
           packages: platform-tools
       - name: Install Android SDK packages
         run: sdkmanager "platforms;android-35" "build-tools;35.0.0"
-      - name: Download Go dependencies
-        run: go mod download
+      - name: Resolve Go dependencies and checksums
+        run: go mod tidy
       - name: Build Android ARM64 engine
         run: |
           mkdir -p android-app/app/src/main/assets

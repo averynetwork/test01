@@ -1,0 +1,34 @@
+name: Import Brarchive source
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/import-source.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout destination repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Import upstream Go source
+        run: |
+          set -euo pipefail
+          git clone --depth 1 https://github.com/wisebreeze/brarchive-go.git /tmp/brarchive-upstream
+          rsync -a --exclude='.git' /tmp/brarchive-upstream/ ./
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No upstream changes to import."
+          else
+            git commit -m "Import Brarchive Go source"
+            git push
+          fi

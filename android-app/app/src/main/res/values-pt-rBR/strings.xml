@@ -31,4 +31,7 @@
     <string name="done">Concluído. O resultado foi salvo na pasta selecionada.</string>
     <string name="cannot_read_directory">Não foi possível ler a pasta: %1$s</string>
     <string name="cannot_create_folder">Não foi possível criar a pasta</string>
+    <string name="operation_failed">A operação falhou</string>
+    <string name="engine_no_output">O mecanismo não criou um resultado.</string>
+    <string name="engine_exit_code">O arquivador terminou com o código %1$d</string>
 </resources>

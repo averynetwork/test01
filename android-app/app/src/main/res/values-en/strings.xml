@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_subtitle">Bedrock archiver</string>
+    <string name="operation">Operation</string>
+    <string name="unpack">Extract</string>
+    <string name="create_brarchive">Create .brarchive</string>
+    <string name="archive_root">Archive root</string>
+    <string name="source_archive">Source archive</string>
+    <string name="folder_selected">Folder selected</string>
+    <string name="choose_folder_or_file">Choose a folder or file</string>
+    <string name="file_not_selected">No file selected</string>
+    <string name="choose_folder_root">Choose folder as root</string>
+    <string name="choose_single_file">Or choose a single file</string>
+    <string name="choose_file">Choose file</string>
+    <string name="destination_folder">Destination folder</string>
+    <string name="not_selected">Not selected</string>
+    <string name="choose_folder">Choose folder</string>
+    <string name="running">Processing…</string>
+    <string name="working">Working…</string>
+    <string name="unpack_button">Extract</string>
+    <string name="create_archive">Create archive</string>
+    <string name="local_processing">All processing happens locally on your device.</string>
+    <string name="choose_input">Choose an input file</string>
+    <string name="cannot_open_folder">Could not open the selected folder</string>
+    <string name="cannot_open_input">Could not open the input file</string>
+    <string name="engine_missing">Archive engine is missing or cannot be executed</string>
+    <string name="cannot_open_destination">Could not open the destination folder</string>
+    <string name="cannot_create_output">Could not create the output file</string>
+    <string name="cannot_write_output">Could not write the output</string>
+    <string name="cannot_read_file">Could not read file: %1$s</string>
+    <string name="done">Done. The result was saved to the selected folder.</string>
+    <string name="cannot_read_directory">Could not read folder: %1$s</string>
+    <string name="cannot_create_folder">Could not create folder</string>
+</resources>

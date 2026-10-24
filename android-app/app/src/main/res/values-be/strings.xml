@@ -31,4 +31,7 @@
     <string name="done">Гатова. Вынік захаваны ў выбраную папку.</string>
     <string name="cannot_read_directory">Не ўдалося прачытаць папку: %1$s</string>
     <string name="cannot_create_folder">Не ўдалося стварыць папку</string>
+    <string name="operation_failed">Не ўдалося выканаць аперацыю</string>
+    <string name="engine_no_output">Архіватар не стварыў вынік.</string>
+    <string name="engine_exit_code">Архіватар завяршыў працу з кодам %1$d</string>
 </resources>

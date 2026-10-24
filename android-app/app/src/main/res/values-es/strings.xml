@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_subtitle">Archivador Bedrock</string>
+    <string name="operation">Operación</string>
+    <string name="unpack">Extraer</string>
+    <string name="create_brarchive">Crear .brarchive</string>
+    <string name="archive_root">Carpeta raíz del archivo</string>
+    <string name="source_archive">Archivo de origen</string>
+    <string name="folder_selected">Carpeta seleccionada</string>
+    <string name="choose_folder_or_file">Elige una carpeta o un archivo</string>
+    <string name="file_not_selected">No se ha seleccionado ningún archivo</string>
+    <string name="choose_folder_root">Elegir carpeta raíz</string>
+    <string name="choose_single_file">O elegir un solo archivo</string>
+    <string name="choose_file">Elegir archivo</string>
+    <string name="destination_folder">Carpeta de destino</string>
+    <string name="not_selected">No seleccionada</string>
+    <string name="choose_folder">Elegir carpeta</string>
+    <string name="running">Procesando…</string>
+    <string name="working">En curso…</string>
+    <string name="unpack_button">Extraer</string>
+    <string name="create_archive">Crear archivo</string>
+    <string name="local_processing">El procesamiento se realiza localmente en tu dispositivo.</string>
+    <string name="choose_input">Elige un archivo de entrada</string>
+    <string name="cannot_open_folder">No se pudo abrir la carpeta seleccionada</string>
+    <string name="cannot_open_input">No se pudo abrir el archivo de entrada</string>
+    <string name="engine_missing">El motor de archivado no está instalado o no se puede ejecutar</string>
+    <string name="cannot_open_destination">No se pudo abrir la carpeta de destino</string>
+    <string name="cannot_create_output">No se pudo crear el archivo de salida</string>
+    <string name="cannot_write_output">No se pudo guardar el resultado</string>
+    <string name="cannot_read_file">No se pudo leer el archivo: %1$s</string>
+    <string name="done">Listo. El resultado se guardó en la carpeta seleccionada.</string>
+    <string name="cannot_read_directory">No se pudo leer la carpeta: %1$s</string>
+    <string name="cannot_create_folder">No se pudo crear la carpeta</string>
+</resources>

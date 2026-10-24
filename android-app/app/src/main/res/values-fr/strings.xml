@@ -31,4 +31,7 @@
     <string name="done">Terminé. Le résultat a été enregistré dans le dossier choisi.</string>
     <string name="cannot_read_directory">Impossible de lire le dossier : %1$s</string>
     <string name="cannot_create_folder">Impossible de créer le dossier</string>
+    <string name="operation_failed">L’opération a échoué</string>
+    <string name="engine_no_output">Le moteur n’a créé aucun résultat.</string>
+    <string name="engine_exit_code">L’archiveur s’est terminé avec le code %1$d</string>
 </resources>

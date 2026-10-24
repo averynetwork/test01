@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_subtitle">Bedrock-Archivierung</string>
+    <string name="operation">Aktion</string>
+    <string name="unpack">Entpacken</string>
+    <string name="create_brarchive">.brarchive erstellen</string>
+    <string name="archive_root">Archiv-Stammordner</string>
+    <string name="source_archive">Quellarchiv</string>
+    <string name="folder_selected">Ordner ausgewählt</string>
+    <string name="choose_folder_or_file">Ordner oder Datei auswählen</string>
+    <string name="file_not_selected">Keine Datei ausgewählt</string>
+    <string name="choose_folder_root">Ordner als Stamm auswählen</string>
+    <string name="choose_single_file">Oder einzelne Datei auswählen</string>
+    <string name="choose_file">Datei auswählen</string>
+    <string name="destination_folder">Zielordner</string>
+    <string name="not_selected">Nicht ausgewählt</string>
+    <string name="choose_folder">Ordner auswählen</string>
+    <string name="running">Vorgang läuft…</string>
+    <string name="working">Wird ausgeführt…</string>
+    <string name="unpack_button">Entpacken</string>
+    <string name="create_archive">Archiv erstellen</string>
+    <string name="local_processing">Die Verarbeitung erfolgt lokal auf deinem Gerät.</string>
+    <string name="choose_input">Eingabedatei auswählen</string>
+    <string name="cannot_open_folder">Der ausgewählte Ordner konnte nicht geöffnet werden</string>
+    <string name="cannot_open_input">Die Eingabedatei konnte nicht geöffnet werden</string>
+    <string name="engine_missing">Archivmodul fehlt oder kann nicht ausgeführt werden</string>
+    <string name="cannot_open_destination">Der Zielordner konnte nicht geöffnet werden</string>
+    <string name="cannot_create_output">Ausgabedatei konnte nicht erstellt werden</string>
+    <string name="cannot_write_output">Ergebnis konnte nicht geschrieben werden</string>
+    <string name="cannot_read_file">Datei konnte nicht gelesen werden: %1$s</string>
+    <string name="done">Fertig. Das Ergebnis wurde im ausgewählten Ordner gespeichert.</string>
+    <string name="cannot_read_directory">Ordner konnte nicht gelesen werden: %1$s</string>
+    <string name="cannot_create_folder">Ordner konnte nicht erstellt werden</string>
+</resources>

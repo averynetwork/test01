@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_subtitle">Archiwizator Bedrock</string>
+    <string name="operation">Operacja</string>
+    <string name="unpack">Rozpakuj</string>
+    <string name="create_brarchive">Utwórz .brarchive</string>
+    <string name="archive_root">Katalog główny archiwum</string>
+    <string name="source_archive">Archiwum źródłowe</string>
+    <string name="folder_selected">Wybrano folder</string>
+    <string name="choose_folder_or_file">Wybierz folder lub plik</string>
+    <string name="file_not_selected">Nie wybrano pliku</string>
+    <string name="choose_folder_root">Wybierz folder główny</string>
+    <string name="choose_single_file">Lub wybierz pojedynczy plik</string>
+    <string name="choose_file">Wybierz plik</string>
+    <string name="destination_folder">Folder docelowy</string>
+    <string name="not_selected">Nie wybrano</string>
+    <string name="choose_folder">Wybierz folder</string>
+    <string name="running">Przetwarzanie…</string>
+    <string name="working">Pracuję…</string>
+    <string name="unpack_button">Rozpakuj</string>
+    <string name="create_archive">Utwórz archiwum</string>
+    <string name="local_processing">Przetwarzanie odbywa się lokalnie na urządzeniu.</string>
+    <string name="choose_input">Wybierz plik wejściowy</string>
+    <string name="cannot_open_folder">Nie można otworzyć wybranego folderu</string>
+    <string name="cannot_open_input">Nie można otworzyć pliku wejściowego</string>
+    <string name="engine_missing">Brak silnika archiwizatora lub nie można go uruchomić</string>
+    <string name="cannot_open_destination">Nie można otworzyć folderu docelowego</string>
+    <string name="cannot_create_output">Nie można utworzyć pliku wynikowego</string>
+    <string name="cannot_write_output">Nie można zapisać wyniku</string>
+    <string name="cannot_read_file">Nie można odczytać pliku: %1$s</string>
+    <string name="done">Gotowe. Wynik zapisano w wybranym folderze.</string>
+    <string name="cannot_read_directory">Nie można odczytać folderu: %1$s</string>
+    <string name="cannot_create_folder">Nie można utworzyć folderu</string>
+</resources>

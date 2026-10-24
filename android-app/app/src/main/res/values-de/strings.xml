@@ -31,4 +31,7 @@
     <string name="done">Fertig. Das Ergebnis wurde im ausgewählten Ordner gespeichert.</string>
     <string name="cannot_read_directory">Ordner konnte nicht gelesen werden: %1$s</string>
     <string name="cannot_create_folder">Ordner konnte nicht erstellt werden</string>
+    <string name="operation_failed">Der Vorgang ist fehlgeschlagen</string>
+    <string name="engine_no_output">Das Archivmodul hat keine Ausgabe erstellt.</string>
+    <string name="engine_exit_code">Der Archivierer wurde mit Code %1$d beendet</string>
 </resources>

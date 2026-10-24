@@ -74,7 +74,7 @@ private enum class Mode { DECODE, ENCODE }
                 Button(onClick = { scope.launch {
                     busy = true; error = false; status = context.getString(R.string.running)
                     try { status = withContext(Dispatchers.IO) { runArchive(context, input, inputFolder, output!!, mode) } }
-                    catch (e: Exception) { error = true; status = e.message ?: "Операция не выполнена" }
+                    catch (e: Exception) { error = true; status = e.message ?: context.getString(R.string.operation_failed) }
                     finally { busy = false }
                 } }, modifier = Modifier.fillMaxWidth().height(54.dp), enabled = !busy && (input != null || (mode == Mode.ENCODE && inputFolder != null)) && output != null) {
                     if (busy) CircularProgressIndicator(Modifier.size(20.dp), strokeWidth = 2.dp) else Icon(Icons.Rounded.Archive, null)
@@ -98,7 +98,7 @@ private fun runArchive(context: android.content.Context, inputUri: Uri?, inputFo
         copyDocumentFolder(context, docRoot, root)
         root
     } else {
-        val uri = requireNotNull(inputUri) { "Выберите исходный файл" }
+        val uri = requireNotNull(inputUri) { context.getString(R.string.choose_input) }
         val file = File(work, safeName(queryName(context, uri)))
         context.contentResolver.openInputStream(uri).use { src -> requireNotNull(src) { context.getString(R.string.cannot_open_input) }; FileOutputStream(file).use { dst -> src.copyTo(dst) } }
         file
@@ -110,8 +110,8 @@ private fun runArchive(context: android.content.Context, inputUri: Uri?, inputFo
     val process = ProcessBuilder(listOf(executable.absolutePath) + args).directory(work).redirectErrorStream(true).start()
     val log = process.inputStream.bufferedReader().use { it.readText() }
     val code = process.waitFor()
-    check(code == 0) { log.trim().ifBlank { "Архиватор завершился с кодом $code" } }
-    check(outputFile.exists()) { "Движок не создал результат. $log" }
+    check(code == 0) { log.trim().ifBlank { context.getString(R.string.engine_exit_code, code) } }
+    check(outputFile.exists()) { "${context.getString(R.string.engine_no_output)} $log" }
     val tree = DocumentFile.fromTreeUri(context, outputTree) ?: error(context.getString(R.string.cannot_open_destination))
     if (outputFile.isDirectory) copyFolderToTree(context, outputFile, tree) else {
         val target = tree.createFile("application/octet-stream", outputFile.name) ?: error(context.getString(R.string.cannot_create_output))
@@ -129,7 +129,7 @@ private fun copyDocumentFolder(context: android.content.Context, source: Documen
 }
 private fun copyFolderToTree(context: android.content.Context, source: File, target: DocumentFile) {
     source.listFiles()?.forEach { child -> if (child.isDirectory) copyFolderToTree(context, child, target.createDirectory(child.name ?: "folder") ?: error(context.getString(R.string.cannot_create_folder))) else {
-        val out = target.createFile("application/octet-stream", child.name ?: "file") ?: error("Не удалось создать файл")
+        val out = target.createFile("application/octet-stream", child.name ?: "file") ?: error(context.getString(R.string.cannot_create_output))
         context.contentResolver.openOutputStream(out.uri, "w").use { dst -> requireNotNull(dst); child.inputStream().use { it.copyTo(dst) } }
     } }
 }

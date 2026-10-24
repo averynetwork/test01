@@ -31,4 +31,7 @@
     <string name="done">Listo. El resultado se guardó en la carpeta seleccionada.</string>
     <string name="cannot_read_directory">No se pudo leer la carpeta: %1$s</string>
     <string name="cannot_create_folder">No se pudo crear la carpeta</string>
+    <string name="operation_failed">La operación ha fallado</string>
+    <string name="engine_no_output">El motor no creó ningún resultado.</string>
+    <string name="engine_exit_code">El archivador terminó con el código %1$d</string>
 </resources>

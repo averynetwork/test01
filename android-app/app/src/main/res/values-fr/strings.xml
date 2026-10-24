@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_subtitle">Archiveur Bedrock</string>
+    <string name="operation">Opération</string>
+    <string name="unpack">Extraire</string>
+    <string name="create_brarchive">Créer .brarchive</string>
+    <string name="archive_root">Dossier racine de l’archive</string>
+    <string name="source_archive">Archive source</string>
+    <string name="folder_selected">Dossier sélectionné</string>
+    <string name="choose_folder_or_file">Choisissez un dossier ou un fichier</string>
+    <string name="file_not_selected">Aucun fichier sélectionné</string>
+    <string name="choose_folder_root">Choisir le dossier racine</string>
+    <string name="choose_single_file">Ou choisir un seul fichier</string>
+    <string name="choose_file">Choisir un fichier</string>
+    <string name="destination_folder">Dossier de destination</string>
+    <string name="not_selected">Non sélectionné</string>
+    <string name="choose_folder">Choisir un dossier</string>
+    <string name="running">Traitement en cours…</string>
+    <string name="working">En cours…</string>
+    <string name="unpack_button">Extraire</string>
+    <string name="create_archive">Créer l’archive</string>
+    <string name="local_processing">Le traitement s’effectue localement sur votre appareil.</string>
+    <string name="choose_input">Choisissez un fichier source</string>
+    <string name="cannot_open_folder">Impossible d’ouvrir le dossier sélectionné</string>
+    <string name="cannot_open_input">Impossible d’ouvrir le fichier source</string>
+    <string name="engine_missing">Le moteur d’archivage est absent ou ne peut pas être exécuté</string>
+    <string name="cannot_open_destination">Impossible d’ouvrir le dossier de destination</string>
+    <string name="cannot_create_output">Impossible de créer le fichier de sortie</string>
+    <string name="cannot_write_output">Impossible d’écrire le résultat</string>
+    <string name="cannot_read_file">Impossible de lire le fichier : %1$s</string>
+    <string name="done">Terminé. Le résultat a été enregistré dans le dossier choisi.</string>
+    <string name="cannot_read_directory">Impossible de lire le dossier : %1$s</string>
+    <string name="cannot_create_folder">Impossible de créer le dossier</string>
+</resources>

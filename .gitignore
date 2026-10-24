@@ -1,0 +1,20 @@
+# Binaries
+/bin/
+
+# Go workspace files
+*.sum
+/go.sum
+go.work
+go.work.sum
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs
+*.log
+logs/

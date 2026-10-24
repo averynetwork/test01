@@ -31,4 +31,7 @@
     <string name="done">Дайын. Нәтиже таңдалған бумаға сақталды.</string>
     <string name="cannot_read_directory">Буманы оқу мүмкін болмады: %1$s</string>
     <string name="cannot_create_folder">Буманы жасау мүмкін болмады</string>
+    <string name="operation_failed">Әрекетті орындау сәтсіз аяқталды</string>
+    <string name="engine_no_output">Архиватор нәтиже жасамады.</string>
+    <string name="engine_exit_code">Архиватор %1$d кодымен аяқталды</string>
 </resources>

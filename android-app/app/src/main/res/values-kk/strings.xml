@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_subtitle">Bedrock архиваторы</string>
+    <string name="operation">Әрекет</string>
+    <string name="unpack">Архивтен шығару</string>
+    <string name="create_brarchive">.brarchive жасау</string>
+    <string name="archive_root">Архивтің түбірлік бумасы</string>
+    <string name="source_archive">Бастапқы архив</string>
+    <string name="folder_selected">Бума таңдалды</string>
+    <string name="choose_folder_or_file">Бума немесе файл таңдаңыз</string>
+    <string name="file_not_selected">Файл таңдалмаған</string>
+    <string name="choose_folder_root">Түбірлік бума ретінде таңдау</string>
+    <string name="choose_single_file">Немесе бір файл таңдау</string>
+    <string name="choose_file">Файл таңдау</string>
+    <string name="destination_folder">Мақсатты бума</string>
+    <string name="not_selected">Таңдалмаған</string>
+    <string name="choose_folder">Бума таңдау</string>
+    <string name="running">Өңделуде…</string>
+    <string name="working">Орындалуда…</string>
+    <string name="unpack_button">Архивтен шығару</string>
+    <string name="create_archive">Архив жасау</string>
+    <string name="local_processing">Өңдеу құрылғыңызда жергілікті орындалады.</string>
+    <string name="choose_input">Бастапқы файлды таңдаңыз</string>
+    <string name="cannot_open_folder">Таңдалған буманы ашу мүмкін болмады</string>
+    <string name="cannot_open_input">Бастапқы файлды ашу мүмкін болмады</string>
+    <string name="engine_missing">Архиватор орнатылмаған немесе оны іске қосу мүмкін емес</string>
+    <string name="cannot_open_destination">Мақсатты буманы ашу мүмкін болмады</string>
+    <string name="cannot_create_output">Нәтиже файлын жасау мүмкін болмады</string>
+    <string name="cannot_write_output">Нәтижені жазу мүмкін болмады</string>
+    <string name="cannot_read_file">Файлды оқу мүмкін болмады: %1$s</string>
+    <string name="done">Дайын. Нәтиже таңдалған бумаға сақталды.</string>
+    <string name="cannot_read_directory">Буманы оқу мүмкін болмады: %1$s</string>
+    <string name="cannot_create_folder">Буманы жасау мүмкін болмады</string>
+</resources>

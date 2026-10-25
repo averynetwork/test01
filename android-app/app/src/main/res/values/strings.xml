@@ -34,4 +34,13 @@
     <string name="operation_failed">Операция не выполнена</string>
     <string name="engine_no_output">Движок не создал результат.</string>
     <string name="engine_exit_code">Архиватор завершился с кодом %1$d</string>
+    <string name="bulk_unpack">Пакетная распаковка</string>
+    <string name="choose_bulk_folder">Выбрать папку с архивами</string>
+    <string name="delete_archives_after">Удалять архивы после успешной распаковки</string>
+    <string name="bulk_folder_hint">Выберите папку для поиска .brarchive, включая подпапки</string>
+    <string name="no_archives_found">В выбранной папке архивы .brarchive не найдены</string>
+    <string name="cannot_delete_archive">Не удалось удалить архив %1$s</string>
+    <string name="bulk_done">Готово: распаковано архивов — %1$d</string>
+    <string name="bulk_partial">Распаковано %1$d из %2$d. Ошибки:
+%3$s</string>
 </resources>

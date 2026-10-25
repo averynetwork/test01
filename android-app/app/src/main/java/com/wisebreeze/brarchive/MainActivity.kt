@@ -66,11 +66,13 @@ private enum class Mode { DECODE, ENCODE }
                     if (mode == Mode.ENCODE) OutlinedButton(onClick = { pickFolder.launch(null) }, modifier = Modifier.fillMaxWidth(), enabled = !busy) { Icon(Icons.Rounded.FolderOpen, null); Spacer(Modifier.width(8.dp)); Text(stringResource(R.string.choose_folder_root)) }
                     OutlinedButton(onClick = { pickInput.launch(arrayOf("*/*")) }, modifier = Modifier.fillMaxWidth(), enabled = !busy) { Icon(Icons.Rounded.FolderOpen, null); Spacer(Modifier.width(8.dp)); Text(if (mode == Mode.ENCODE) stringResource(R.string.choose_single_file) else stringResource(R.string.choose_file)) }
                 } }
-                OutlinedCard { Column(Modifier.padding(18.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                    Text(stringResource(R.string.destination_folder), style = MaterialTheme.typography.titleMedium)
-                    Text(if (output == null) stringResource(R.string.not_selected) else stringResource(R.string.folder_selected), style = MaterialTheme.typography.bodyMedium)
-                    OutlinedButton(onClick = { pickOutput.launch(null) }, modifier = Modifier.fillMaxWidth(), enabled = !busy) { Icon(Icons.Rounded.FolderOpen, null); Spacer(Modifier.width(8.dp)); Text(stringResource(R.string.choose_folder)) }
-                } }
+                if (!(mode == Mode.DECODE && bulkMode)) {
+                    OutlinedCard { Column(Modifier.padding(18.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                        Text(stringResource(R.string.destination_folder), style = MaterialTheme.typography.titleMedium)
+                        Text(if (output == null) stringResource(R.string.not_selected) else stringResource(R.string.folder_selected), style = MaterialTheme.typography.bodyMedium)
+                        OutlinedButton(onClick = { pickOutput.launch(null) }, modifier = Modifier.fillMaxWidth(), enabled = !busy) { Icon(Icons.Rounded.FolderOpen, null); Spacer(Modifier.width(8.dp)); Text(stringResource(R.string.choose_folder)) }
+                    } }
+                }
                 Button(onClick = { scope.launch {
                     busy = true; error = false; status = context.getString(R.string.running)
                     try { status = withContext(Dispatchers.IO) { runArchive(context, input, inputFolder, output!!, mode) } }

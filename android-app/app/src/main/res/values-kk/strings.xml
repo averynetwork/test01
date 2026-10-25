@@ -34,4 +34,13 @@
     <string name="operation_failed">Әрекетті орындау сәтсіз аяқталды</string>
     <string name="engine_no_output">Архиватор нәтиже жасамады.</string>
     <string name="engine_exit_code">Архиватор %1$d кодымен аяқталды</string>
+    <string name="bulk_unpack">Топтап архивтен шығару</string>
+    <string name="choose_bulk_folder">Архивтері бар буманы таңдау</string>
+    <string name="delete_archives_after">Сәтті шығарылғаннан кейін архивтерді жою</string>
+    <string name="bulk_folder_hint">Осы бума мен ішкі бумалардан .brarchive файлдарын іздеу үшін буманы таңдаңыз</string>
+    <string name="no_archives_found">Таңдалған бумадан .brarchive файлдары табылмады</string>
+    <string name="cannot_delete_archive">%1$s архивін жою мүмкін болмады</string>
+    <string name="bulk_done">Дайын: шығарылған архивтер — %1$d</string>
+    <string name="bulk_partial">%2$d архивтің %1$d шығарылды. Қателер:
+%3$s</string>
 </resources>

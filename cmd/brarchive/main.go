@@ -477,7 +477,14 @@ func decodeAction(c *cli.Context) error {
     }
     
     for fileName, content := range archive {
-        filePath := filepath.Join(outputPath, fileName)
+        cleanName := filepath.Clean(filepath.FromSlash(fileName))
+        if filepath.IsAbs(cleanName) || cleanName == ".." || strings.HasPrefix(cleanName, ".."+string(os.PathSeparator)) {
+            return fmt.Errorf("unsafe path in archive: %s", fileName)
+        }
+        filePath := filepath.Join(outputPath, cleanName)
+        if err := os.MkdirAll(filepath.Dir(filePath), 0755); err != nil {
+            return fmt.Errorf("failed to create output directory for %s: %v", filePath, err)
+        }
         if err := os.WriteFile(filePath, []byte(content), 0644); err != nil {
             return fmt.Errorf("failed to write output file %s: %v", filePath, err)
         }

@@ -34,4 +34,13 @@
     <string name="operation_failed">The operation failed</string>
     <string name="engine_no_output">The engine did not create an output.</string>
     <string name="engine_exit_code">The archiver exited with code %1$d</string>
+    <string name="bulk_unpack">Bulk extraction</string>
+    <string name="choose_bulk_folder">Choose folder with archives</string>
+    <string name="delete_archives_after">Delete archives after successful extraction</string>
+    <string name="bulk_folder_hint">Choose a folder to search for .brarchive files, including subfolders</string>
+    <string name="no_archives_found">No .brarchive files were found in the selected folder</string>
+    <string name="cannot_delete_archive">Could not delete archive %1$s</string>
+    <string name="bulk_done">Done: extracted %1$d archive(s)</string>
+    <string name="bulk_partial">Extracted %1$d of %2$d. Errors:
+%3$s</string>
 </resources>

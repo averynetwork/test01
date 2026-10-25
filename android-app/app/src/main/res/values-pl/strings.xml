@@ -34,4 +34,13 @@
     <string name="operation_failed">Nie udało się wykonać operacji</string>
     <string name="engine_no_output">Silnik nie utworzył wyniku.</string>
     <string name="engine_exit_code">Archiwizator zakończył działanie z kodem %1$d</string>
+    <string name="bulk_unpack">Rozpakowywanie zbiorcze</string>
+    <string name="choose_bulk_folder">Wybierz folder z archiwami</string>
+    <string name="delete_archives_after">Usuń archiwa po udanym rozpakowaniu</string>
+    <string name="bulk_folder_hint">Wybierz folder do wyszukiwania plików .brarchive, także w podfolderach</string>
+    <string name="no_archives_found">Nie znaleziono plików .brarchive w wybranym folderze</string>
+    <string name="cannot_delete_archive">Nie można usunąć archiwum %1$s</string>
+    <string name="bulk_done">Gotowe: rozpakowano archiwa — %1$d</string>
+    <string name="bulk_partial">Rozpakowano %1$d z %2$d. Błędy:
+%3$s</string>
 </resources>

@@ -88,6 +88,15 @@ private enum class Mode { DECODE, ENCODE }
                         OutlinedButton(onClick = { pickOutput.launch(null) }, modifier = Modifier.fillMaxWidth(), enabled = !busy) { Icon(Icons.Rounded.FolderOpen, null); Spacer(Modifier.width(8.dp)); Text(stringResource(R.string.choose_folder)) }
                     } }
                 }
+                if (status.isNotBlank()) {
+                    ElevatedCard(colors = CardDefaults.elevatedCardColors(containerColor = if (error) MaterialTheme.colorScheme.errorContainer else MaterialTheme.colorScheme.secondaryContainer)) {
+                        Row(Modifier.fillMaxWidth().padding(16.dp), verticalAlignment = androidx.compose.ui.Alignment.CenterVertically) {
+                            if (busy) CircularProgressIndicator(Modifier.size(20.dp), strokeWidth = 2.dp)
+                            Spacer(Modifier.width(10.dp))
+                            Text(status, color = if (error) MaterialTheme.colorScheme.onErrorContainer else MaterialTheme.colorScheme.onSecondaryContainer)
+                        }
+                    }
+                }
                 Button(
                     onClick = {
                         scope.launch {
@@ -122,6 +131,19 @@ private enum class Mode { DECODE, ENCODE }
     }
 }
 
+private fun prepareEngine(context: android.content.Context): File {
+    val installed = File(context.applicationInfo.nativeLibraryDir, "libbrarchive.so")
+    check(installed.isFile) { context.getString(R.string.engine_missing) + " (not found: " + installed.absolutePath + ")" }
+    val executable = File(context.filesDir, "brarchive-engine")
+    if (!executable.isFile || executable.length() != installed.length()) {
+        installed.inputStream().use { src -> FileOutputStream(executable).use { dst -> src.copyTo(dst) } }
+    }
+    check(executable.setExecutable(true, true) || executable.canExecute()) {
+        context.getString(R.string.engine_missing) + " (cannot mark executable)"
+    }
+    return executable
+}
+
 private fun runArchive(context: android.content.Context, inputUri: Uri?, inputFolderUri: Uri?, outputTree: Uri, mode: Mode, bulkMode: Boolean, deleteAfterExtract: Boolean): String {
     val work = File(context.cacheDir, "brarchive-work").apply { deleteRecursively(); mkdirs() }
     if (mode == Mode.DECODE && bulkMode) {
@@ -130,8 +152,7 @@ private fun runArchive(context: android.content.Context, inputUri: Uri?, inputFo
         val archives = mutableListOf<DocumentFile>()
         collectBrarchives(root, archives)
         check(archives.isNotEmpty()) { context.getString(R.string.no_archives_found) }
-        val executable = File(context.applicationInfo.nativeLibraryDir, "libbrarchive.so")
-        check(executable.exists() && executable.canExecute()) { context.getString(R.string.engine_missing) }
+        val executable = prepareEngine(context)
         var completed = 0
         val failures = mutableListOf<String>()
         for ((index, archiveDoc) in archives.withIndex()) {
@@ -167,8 +188,7 @@ private fun runArchive(context: android.content.Context, inputUri: Uri?, inputFo
         context.contentResolver.openInputStream(uri).use { src -> requireNotNull(src) { context.getString(R.string.cannot_open_input) }; FileOutputStream(file).use { dst -> src.copyTo(dst) } }
         file
     }
-    val executable = File(context.applicationInfo.nativeLibraryDir, "libbrarchive.so")
-    check(executable.exists() && executable.canExecute()) { context.getString(R.string.engine_missing) }
+    val executable = prepareEngine(context)
     val outputFile = File(work, if (mode == Mode.ENCODE) "${if (inputFile.isDirectory) "${inputFolderUri?.lastPathSegment ?: "archive"}" else inputFile.nameWithoutExtension}.brarchive" else "decoded-${inputFile.nameWithoutExtension}")
     val args = if (mode == Mode.ENCODE) listOf("encode", inputFile.absolutePath, "-o", outputFile.absolutePath) else listOf("decode", inputFile.absolutePath, "-o", outputFile.absolutePath)
     val process = ProcessBuilder(listOf(executable.absolutePath) + args).directory(work).redirectErrorStream(true).start()

@@ -34,4 +34,13 @@
     <string name="operation_failed">Der Vorgang ist fehlgeschlagen</string>
     <string name="engine_no_output">Das Archivmodul hat keine Ausgabe erstellt.</string>
     <string name="engine_exit_code">Der Archivierer wurde mit Code %1$d beendet</string>
+    <string name="bulk_unpack">Stapel-Entpacken</string>
+    <string name="choose_bulk_folder">Ordner mit Archiven auswählen</string>
+    <string name="delete_archives_after">Archive nach erfolgreichem Entpacken löschen</string>
+    <string name="bulk_folder_hint">Ordner nach .brarchive-Dateien durchsuchen, einschließlich Unterordnern</string>
+    <string name="no_archives_found">Im ausgewählten Ordner wurden keine .brarchive-Dateien gefunden</string>
+    <string name="cannot_delete_archive">Archiv %1$s konnte nicht gelöscht werden</string>
+    <string name="bulk_done">Fertig: Archive entpackt — %1$d</string>
+    <string name="bulk_partial">%1$d von %2$d entpackt. Fehler:
+%3$s</string>
 </resources>

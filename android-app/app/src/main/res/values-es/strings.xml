@@ -34,4 +34,13 @@
     <string name="operation_failed">La operación ha fallado</string>
     <string name="engine_no_output">El motor no creó ningún resultado.</string>
     <string name="engine_exit_code">El archivador terminó con el código %1$d</string>
+    <string name="bulk_unpack">Extracción por lotes</string>
+    <string name="choose_bulk_folder">Elegir carpeta con archivos</string>
+    <string name="delete_archives_after">Eliminar archivos tras extraerlos correctamente</string>
+    <string name="bulk_folder_hint">Buscar archivos .brarchive en esta carpeta y sus subcarpetas</string>
+    <string name="no_archives_found">No se encontraron archivos .brarchive en la carpeta seleccionada</string>
+    <string name="cannot_delete_archive">No se pudo eliminar el archivo %1$s</string>
+    <string name="bulk_done">Listo: archivos extraídos — %1$d</string>
+    <string name="bulk_partial">Se extrajeron %1$d de %2$d. Errores:
+%3$s</string>
 </resources>

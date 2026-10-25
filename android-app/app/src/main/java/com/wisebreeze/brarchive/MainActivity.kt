@@ -88,19 +88,34 @@ private enum class Mode { DECODE, ENCODE }
                         OutlinedButton(onClick = { pickOutput.launch(null) }, modifier = Modifier.fillMaxWidth(), enabled = !busy) { Icon(Icons.Rounded.FolderOpen, null); Spacer(Modifier.width(8.dp)); Text(stringResource(R.string.choose_folder)) }
                     } }
                 }
-                Button(onClick = { scope.launch {
-                    busy = true; error = false; status = context.getString(R.string.running)
-                    try { status = withContext(Dispatchers.IO) { runArchive(context, input, inputFolder, output ?: inputFolder!!, mode, bulkMode, deleteAfterExtract) } }
-                    catch (e: Exception) { error = true; status = e.message ?: context.getString(R.string.operation_failed) }
-                    finally { busy = false }
-                Button(onClick = { scope.launch {
-                    busy = true; error = false; status = context.getString(R.string.running)
-                    try { status = withContext(Dispatchers.IO) { runArchive(context, input, inputFolder, output ?: inputFolder!!, mode, bulkMode, deleteAfterExtract) } }
-                    catch (e: Exception) { error = true; status = e.message ?: context.getString(R.string.operation_failed) }
-                    finally { busy = false }
-                } }, modifier = Modifier.fillMaxWidth().height(54.dp), enabled = !busy && ((mode == Mode.DECODE && bulkMode && inputFolder != null) || ((input != null || (mode == Mode.ENCODE && inputFolder != null)) && output != null))) {
-                    if (busy) CircularProgressIndicator(Modifier.size(20.dp), strokeWidth = 2.dp) else Icon(Icons.Rounded.Archive, null)
-                    Spacer(Modifier.width(10.dp)); Text(if (busy) stringResource(R.string.working) else if (mode == Mode.DECODE) stringResource(R.string.unpack_button) else stringResource(R.string.create_archive))
+                Button(
+                    onClick = {
+                        scope.launch {
+                            busy = true
+                            error = false
+                            status = context.getString(R.string.running)
+                            try {
+                                status = withContext(Dispatchers.IO) {
+                                    runArchive(context, input, inputFolder, output ?: inputFolder!!, mode, bulkMode, deleteAfterExtract)
+                                }
+                            } catch (e: Exception) {
+                                error = true
+                                status = e.message ?: context.getString(R.string.operation_failed)
+                            } finally {
+                                busy = false
+                            }
+                        }
+                    },
+                    modifier = Modifier.fillMaxWidth().height(54.dp),
+                    enabled = !busy && (
+                        (mode == Mode.DECODE && bulkMode && inputFolder != null) ||
+                        ((input != null || (mode == Mode.ENCODE && inputFolder != null)) && output != null)
+                    )
+                ) {
+                    if (busy) CircularProgressIndicator(Modifier.size(20.dp), strokeWidth = 2.dp)
+                    else Icon(Icons.Rounded.Archive, null)
+                    Spacer(Modifier.width(10.dp))
+                    Text(if (busy) stringResource(R.string.working) else if (mode == Mode.DECODE) stringResource(R.string.unpack_button) else stringResource(R.string.create_archive))
                 }
             }
         }

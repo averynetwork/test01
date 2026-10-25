@@ -34,4 +34,13 @@
     <string name="operation_failed">Не вдалося виконати операцію</string>
     <string name="engine_no_output">Архіватор не створив результат.</string>
     <string name="engine_exit_code">Архіватор завершив роботу з кодом %1$d</string>
+    <string name="bulk_unpack">Пакетне розпакування</string>
+    <string name="choose_bulk_folder">Вибрати папку з архівами</string>
+    <string name="delete_archives_after">Видаляти архіви після успішного розпакування</string>
+    <string name="bulk_folder_hint">Виберіть папку для пошуку .brarchive, включно з підпапками</string>
+    <string name="no_archives_found">У вибраній папці не знайдено архівів .brarchive</string>
+    <string name="cannot_delete_archive">Не вдалося видалити архів %1$s</string>
+    <string name="bulk_done">Готово: розпаковано архівів — %1$d</string>
+    <string name="bulk_partial">Розпаковано %1$d із %2$d. Помилки:
+%3$s</string>
 </resources>

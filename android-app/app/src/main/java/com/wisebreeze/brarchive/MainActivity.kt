@@ -92,6 +92,38 @@ private enum class Mode { DECODE, ENCODE }
 
 private fun runArchive(context: android.content.Context, inputUri: Uri?, inputFolderUri: Uri?, outputTree: Uri, mode: Mode): String {
     val work = File(context.cacheDir, "brarchive-work").apply { deleteRecursively(); mkdirs() }
+    if (mode == Mode.DECODE && bulkMode) {
+        val rootUri = requireNotNull(inputFolderUri) { context.getString(R.string.bulk_folder_hint) }
+        val root = DocumentFile.fromTreeUri(context, rootUri) ?: error(context.getString(R.string.cannot_open_folder))
+        val archives = mutableListOf<DocumentFile>()
+        collectBrarchives(root, archives)
+        check(archives.isNotEmpty()) { context.getString(R.string.no_archives_found) }
+        val executable = File(context.applicationInfo.nativeLibraryDir, "libbrarchive.so")
+        check(executable.exists() && executable.canExecute()) { context.getString(R.string.engine_missing) }
+        var completed = 0
+        val failures = mutableListOf<String>()
+        for ((index, archiveDoc) in archives.withIndex()) {
+            try {
+                val name = archiveDoc.name ?: "archive.brarchive"
+                val archiveFile = File(work, "bulk-" + index + "-" + safeName(name))
+                context.contentResolver.openInputStream(archiveDoc.uri).use { src -> requireNotNull(src) { context.getString(R.string.cannot_open_input) }; FileOutputStream(archiveFile).use { dst -> src.copyTo(dst) } }
+                val decodedDir = File(work, "decoded-" + index).apply { mkdirs() }
+                val process = ProcessBuilder(listOf(executable.absolutePath, "decode", archiveFile.absolutePath, "-o", decodedDir.absolutePath)).directory(work).redirectErrorStream(true).start()
+                val log = process.inputStream.bufferedReader().use { it.readText() }
+                val code = process.waitFor()
+                check(code == 0) { log.trim().ifBlank { context.getString(R.string.engine_exit_code, code) } }
+                check(decodedDir.listFiles()?.isNotEmpty() == true) { context.getString(R.string.engine_no_output) + " " + log }
+                val parent = archiveDoc.parentFile ?: root
+                copyFolderToTree(context, decodedDir, parent)
+                if (deleteAfterExtract) check(archiveDoc.delete()) { context.getString(R.string.cannot_delete_archive, name) }
+                completed++
+            } catch (e: Exception) {
+                failures += (archiveDoc.name ?: "archive") + ": " + (e.message ?: "error")
+            }
+        }
+        return if (failures.isEmpty()) context.getString(R.string.bulk_done, completed)
+            else context.getString(R.string.bulk_partial, completed, archives.size, failures.joinToString("\n"))
+    }
     val inputFile: File = if (mode == Mode.ENCODE && inputFolderUri != null) {
         val root = File(work, "input-root").apply { mkdirs() }
         val docRoot = DocumentFile.fromTreeUri(context, inputFolderUri) ?: error(context.getString(R.string.cannot_open_folder))
@@ -118,6 +150,12 @@ private fun runArchive(context: android.content.Context, inputUri: Uri?, inputFo
         context.contentResolver.openOutputStream(target.uri, "w").use { dst -> requireNotNull(dst) { context.getString(R.string.cannot_write_output) }; outputFile.inputStream().use { it.copyTo(dst) } }
     }
     return context.getString(R.string.done)
+}
+private fun collectBrarchives(folder: DocumentFile, output: MutableList<DocumentFile>) {
+    folder.listFiles().forEach { child ->
+        if (child.isDirectory) collectBrarchives(child, output)
+        else if (child.name?.endsWith(".brarchive", ignoreCase = true) == true) output += child
+    }
 }
 private fun copyDocumentFolder(context: android.content.Context, source: DocumentFile, target: File) {
     source.listFiles().forEach { child ->

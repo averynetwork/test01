@@ -34,4 +34,13 @@
     <string name="operation_failed">A operação falhou</string>
     <string name="engine_no_output">O mecanismo não criou um resultado.</string>
     <string name="engine_exit_code">O arquivador terminou com o código %1$d</string>
+    <string name="bulk_unpack">Extração em lote</string>
+    <string name="choose_bulk_folder">Escolher pasta com arquivos</string>
+    <string name="delete_archives_after">Excluir arquivos após extração bem-sucedida</string>
+    <string name="bulk_folder_hint">Buscar arquivos .brarchive nesta pasta e nas subpastas</string>
+    <string name="no_archives_found">Nenhum arquivo .brarchive encontrado na pasta selecionada</string>
+    <string name="cannot_delete_archive">Não foi possível excluir o arquivo %1$s</string>
+    <string name="bulk_done">Concluído: arquivos extraídos — %1$d</string>
+    <string name="bulk_partial">Extraídos %1$d de %2$d. Erros:
+%3$s</string>
 </resources>

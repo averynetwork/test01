@@ -132,14 +132,14 @@ private enum class Mode { DECODE, ENCODE }
 }
 
 private fun prepareEngine(context: android.content.Context): File {
-    val installed = File(context.applicationInfo.nativeLibraryDir, "libbrarchive.so")
-    check(installed.isFile) { context.getString(R.string.engine_missing) + " (not found: " + installed.absolutePath + ")" }
-    val executable = File(context.filesDir, "brarchive-engine")
-    if (!executable.isFile || executable.length() != installed.length()) {
-        installed.inputStream().use { src -> FileOutputStream(executable).use { dst -> src.copyTo(dst) } }
+    // Execute directly from the native-library directory. Android may mount filesDir
+    // with noexec, causing error 13 (Permission denied) even after setExecutable().
+    val executable = File(context.applicationInfo.nativeLibraryDir, "libbrarchive.so")
+    check(executable.isFile) {
+        context.getString(R.string.engine_missing) + " (not found: " + executable.absolutePath + ")"
     }
-    check(executable.setExecutable(true, true) || executable.canExecute()) {
-        context.getString(R.string.engine_missing) + " (cannot mark executable)"
+    check(executable.canExecute()) {
+        context.getString(R.string.engine_missing) + " (native library is not executable: " + executable.absolutePath + ")"
     }
     return executable
 }

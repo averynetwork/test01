@@ -43,6 +43,8 @@ private enum class Mode { DECODE, ENCODE }
     var mode by remember { mutableStateOf(Mode.DECODE) }
     var input by remember { mutableStateOf<Uri?>(null) }
     var inputFolder by remember { mutableStateOf<Uri?>(null) }
+    var bulkMode by remember { mutableStateOf(false) }
+    var deleteAfterExtract by remember { mutableStateOf(false) }
     var output by remember { mutableStateOf<Uri?>(null) }
     var busy by remember { mutableStateOf(false) }
     var status by remember { mutableStateOf(context.getString(R.string.choose_input)) }
@@ -62,9 +64,22 @@ private enum class Mode { DECODE, ENCODE }
                 } }
                 OutlinedCard { Column(Modifier.padding(18.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
                     Text(if (mode == Mode.ENCODE) stringResource(R.string.archive_root) else stringResource(R.string.source_archive), style = MaterialTheme.typography.titleMedium)
-                    Text(if (mode == Mode.ENCODE) inputFolder?.let { stringResource(R.string.folder_selected) } ?: input?.let { queryName(context, it) } ?: stringResource(R.string.choose_folder_or_file) else input?.let { queryName(context, it) } ?: stringResource(R.string.file_not_selected), style = MaterialTheme.typography.bodyMedium)
+                    Text(if (mode == Mode.ENCODE || bulkMode) inputFolder?.let { stringResource(R.string.folder_selected) } ?: if (bulkMode) stringResource(R.string.bulk_folder_hint) else input?.let { queryName(context, it) } ?: stringResource(R.string.choose_folder_or_file) else input?.let { queryName(context, it) } ?: stringResource(R.string.file_not_selected), style = MaterialTheme.typography.bodyMedium)
+                    if (mode == Mode.DECODE) {
+                        Row(verticalAlignment = androidx.compose.ui.Alignment.CenterVertically) {
+                            Checkbox(checked = bulkMode, onCheckedChange = { bulkMode = it; input = null; inputFolder = null }, enabled = !busy)
+                            Text(stringResource(R.string.bulk_unpack))
+                        }
+                        if (bulkMode) {
+                            OutlinedButton(onClick = { pickFolder.launch(null) }, modifier = Modifier.fillMaxWidth(), enabled = !busy) { Icon(Icons.Rounded.FolderOpen, null); Spacer(Modifier.width(8.dp)); Text(stringResource(R.string.choose_bulk_folder)) }
+                            Row(verticalAlignment = androidx.compose.ui.Alignment.CenterVertically) {
+                                Checkbox(checked = deleteAfterExtract, onCheckedChange = { deleteAfterExtract = it }, enabled = !busy)
+                                Text(stringResource(R.string.delete_archives_after))
+                            }
+                        }
+                    }
                     if (mode == Mode.ENCODE) OutlinedButton(onClick = { pickFolder.launch(null) }, modifier = Modifier.fillMaxWidth(), enabled = !busy) { Icon(Icons.Rounded.FolderOpen, null); Spacer(Modifier.width(8.dp)); Text(stringResource(R.string.choose_folder_root)) }
-                    OutlinedButton(onClick = { pickInput.launch(arrayOf("*/*")) }, modifier = Modifier.fillMaxWidth(), enabled = !busy) { Icon(Icons.Rounded.FolderOpen, null); Spacer(Modifier.width(8.dp)); Text(if (mode == Mode.ENCODE) stringResource(R.string.choose_single_file) else stringResource(R.string.choose_file)) }
+                    OutlinedButton(onClick = { pickInput.launch(arrayOf("*/*")) }, modifier = Modifier.fillMaxWidth(), enabled = !busy && !(mode == Mode.DECODE && bulkMode)) { Icon(Icons.Rounded.FolderOpen, null); Spacer(Modifier.width(8.dp)); Text(if (mode == Mode.ENCODE) stringResource(R.string.choose_single_file) else stringResource(R.string.choose_file)) }
                 } }
                 if (!(mode == Mode.DECODE && bulkMode)) {
                     OutlinedCard { Column(Modifier.padding(18.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
@@ -75,10 +90,10 @@ private enum class Mode { DECODE, ENCODE }
                 }
                 Button(onClick = { scope.launch {
                     busy = true; error = false; status = context.getString(R.string.running)
-                    try { status = withContext(Dispatchers.IO) { runArchive(context, input, inputFolder, output!!, mode) } }
+                    try { status = withContext(Dispatchers.IO) { runArchive(context, input, inputFolder, output ?: inputFolder!!, mode, bulkMode, deleteAfterExtract) } }
                     catch (e: Exception) { error = true; status = e.message ?: context.getString(R.string.operation_failed) }
                     finally { busy = false }
-                } }, modifier = Modifier.fillMaxWidth().height(54.dp), enabled = !busy && (input != null || (mode == Mode.ENCODE && inputFolder != null)) && output != null) {
+                } }, modifier = Modifier.fillMaxWidth().height(54.dp), enabled = !busy && ((mode == Mode.DECODE && bulkMode && inputFolder != null) || ((input != null || (mode == Mode.ENCODE && inputFolder != null)) && output != null)) {
                     if (busy) CircularProgressIndicator(Modifier.size(20.dp), strokeWidth = 2.dp) else Icon(Icons.Rounded.Archive, null)
                     Spacer(Modifier.width(10.dp)); Text(if (busy) stringResource(R.string.working) else if (mode == Mode.DECODE) stringResource(R.string.unpack_button) else stringResource(R.string.create_archive))
                 }
@@ -92,7 +107,7 @@ private enum class Mode { DECODE, ENCODE }
     }
 }
 
-private fun runArchive(context: android.content.Context, inputUri: Uri?, inputFolderUri: Uri?, outputTree: Uri, mode: Mode): String {
+private fun runArchive(context: android.content.Context, inputUri: Uri?, inputFolderUri: Uri?, outputTree: Uri, mode: Mode, bulkMode: Boolean, deleteAfterExtract: Boolean): String {
     val work = File(context.cacheDir, "brarchive-work").apply { deleteRecursively(); mkdirs() }
     if (mode == Mode.DECODE && bulkMode) {
         val rootUri = requireNotNull(inputFolderUri) { context.getString(R.string.bulk_folder_hint) }
